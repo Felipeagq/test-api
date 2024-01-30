@@ -22,6 +22,6 @@ jobs:
       run: echo $GITHUB_RUN_NUMBER
 
     - name: docker build image
-      run: $VERSION
+      run: docker build . -t $DOCKER_NAME:$VERSION
 
       
