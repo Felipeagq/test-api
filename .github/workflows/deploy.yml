@@ -5,6 +5,8 @@ jobs:
   aws-ecr-push-image:
     runs-on: ubuntu-latest
     steps:
+      - name: view
+        run: ls
       - name: build docker images
         run: docker build . -t test-python-api
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
