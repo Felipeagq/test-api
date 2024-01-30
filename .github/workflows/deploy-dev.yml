@@ -1,0 +1,48 @@
+name: Deploy to ECR
+on:
+  push:
+    branch: master
+jobs:
+  Pipeline:
+    
+    name: Pipeline
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: start pipeline
+      run: echo "comienzo de pipeline"
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: local env
+      run: cat .env >> $GITHUB_ENV
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: docker build image
+      run: docker build . -t $DOCKER_NAME:$VERSION -t $DOCKER_NAME:latest
+
+    - name: docker push image
+      run: docker push $DOCKER_NAME --all-tags
+
+    - name: SSH Remote Commands
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_IP }}
+        username: ubuntu
+        key: ${{ secrets.ECS_SSH_KEY_PAIR }}
+        script: |
+          aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 721308948482.dkr.ecr.us-east-1.amazonaws.com
+          cd /home/ubuntu/server/apps/felipe-test 
+          ls -all
+          sudo docker stack deploy --with-registry-auth -c docker-compose.yml felipe-test
