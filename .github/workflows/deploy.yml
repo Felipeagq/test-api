@@ -15,9 +15,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: local env
+      run: printenv
+
     - name: docker build image
       run: docker build . -t test
 
-    - name: local env
-      run: echo $VARIABLE
       
