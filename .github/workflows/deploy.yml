@@ -35,9 +35,14 @@ jobs:
     - name: docker push image
       run: docker push $DOCKER_NAME --all-tags
 
-    - name: Ejecutar comando remoto con .bashrc
-      run: |
-        ssh ubuntu@3.82.152.199 'source ~/.bashrc && ecrlogin'
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.ECS_SSH_KEY_PAIR  }}    
-      
+    - name: SSH Remote Commands
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_IP }}
+        username: ubuntu
+        key: ${{ secrets.ECS_SSH_KEY_PAIR }}
+        script: |
+          aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 721308948482.dkr.ecr.us-east-1.amazonaws.com
+          cd /home/ubuntu/server/apps/felipe-test 
+          ls -all
+          sudo docker stack deploy --with-registry-auth -c docker-compose.yml felipe-test
