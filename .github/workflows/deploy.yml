@@ -17,5 +17,5 @@ jobs:
 
     - name: ubicacion
       run: |
-        pwd
-        echo ls
+        pwd |
+        ls -all
