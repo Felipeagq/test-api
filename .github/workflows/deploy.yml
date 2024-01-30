@@ -45,6 +45,6 @@ jobs:
           source .bashrc && ecrlogin
           cd /home/ubuntu/server/apps/felipe-test 
           ls -all
-          source ~.bashrc && stackup felipe-test || true
+          source /home/ubuntu/.bashrc && stackup felipe-test || true
           
       
