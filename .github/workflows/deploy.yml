@@ -35,4 +35,12 @@ jobs:
     - name: docker push image
       run: docker push $DOCKER_NAME --all-tags
 
+    - name: SSH Remote Commands
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 3.82.152.199
+        username: ubuntu
+        key: ${{ secrets.ECS_SSH_KEY_PAIR }}
+        script: 
+          
       
