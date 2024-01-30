@@ -44,7 +44,7 @@ jobs:
         script: |
           cd /home/ubuntu/server/apps/felipe-test 
           ls -all
-          ecrlogin
-          stackup felipe-test
+          ecrlogin || true
+          stackup felipe-test || true
           
       
