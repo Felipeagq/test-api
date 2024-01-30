@@ -19,6 +19,6 @@ jobs:
       run: export $(cat .env | xargs) && env
 
     - name: docker build image
-      run: echo $VERSION
+      run: echo "$VERSION"
 
       
