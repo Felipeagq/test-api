@@ -41,6 +41,9 @@ jobs:
         host: 3.82.152.199
         username: ubuntu
         key: ${{ secrets.ECS_SSH_KEY_PAIR }}
-        script: 
+        script: |
+          cd /home/ubuntu/server/apps/felipe-test 
+          ecrlogin
+          stackup felipe-test
           
       
