@@ -42,7 +42,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.ECS_SSH_KEY_PAIR }}
         script: |
-          ls -all
+          source .bashrc
           cd /home/ubuntu/server/apps/felipe-test 
           ls -all
           ecrlogin || true
