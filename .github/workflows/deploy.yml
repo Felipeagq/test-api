@@ -33,6 +33,6 @@ jobs:
       run: docker build . -t $DOCKER_NAME:$VERSION -t $DOCKER_NAME:latest
 
     - name: docker push image
-      run: docker push $DOCKER_NAME:$VERSION
+      run: docker push $DOCKER_NAME --all-tags
 
       
