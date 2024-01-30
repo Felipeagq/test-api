@@ -42,7 +42,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.ECS_SSH_KEY_PAIR }}
         script: |
-          cd /home/ubuntu/server/apps/felipe-test 
+          cd ${{ secrets.ECS_SSH_KEY_PAIR }}
           ecrlogin
           stackup felipe-test
           
