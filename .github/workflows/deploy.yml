@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: local env
-      run: export $(cat .env | xargs) && env
+      run: cat .env >> $GITHUB_ENV
 
     - name: docker build image
       run: echo $GITHUB_RUN_NUMBER
