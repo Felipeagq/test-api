@@ -16,6 +16,4 @@ jobs:
       uses: actions/checkout@v4
 
     - name: ubicacion
-      run: |
-        pwd |
-        ls -all
+      run: docker build . -t test
