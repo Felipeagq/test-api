@@ -18,10 +18,21 @@ jobs:
     - name: local env
       run: cat .env >> $GITHUB_ENV
 
-    - name: docker build image
-      run: echo $GITHUB_RUN_NUMBER
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
 
     - name: docker build image
       run: docker build . -t $DOCKER_NAME:$VERSION
+
+    - name: docker push image
+      run: docker push $DOCKER_NAME:$VERSION
 
       
