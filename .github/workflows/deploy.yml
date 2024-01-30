@@ -11,9 +11,8 @@ jobs:
 
     - name: start pipeline
       run: echo "comienzo de pipeline"
-      
-    - name: Check out code
-      uses: actions/checkout@v2
 
     - name: ubicacion
-      run: pwd
+      run: |
+        pwd
+        ls
