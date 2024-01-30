@@ -35,16 +35,9 @@ jobs:
     - name: docker push image
       run: docker push $DOCKER_NAME --all-tags
 
-    - name: SSH Remote Commands
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: 3.82.152.199
-        username: ubuntu
-        key: ${{ secrets.ECS_SSH_KEY_PAIR }}
-        script: |
-          source .bashrc && ecrlogin
-          cd /home/ubuntu/server/apps/felipe-test 
-          ls -all
-          source /home/ubuntu/.bashrc && stackup felipe-test || true
-          
+    - name: Ejecutar comando remoto con .bashrc
+      run: |
+        ssh ubuntu@3.82.152.199 'source ~/.bashrc && ecrlogin'
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.ECS_SSH_KEY_PAIR  }}    
       
