@@ -1,7 +1,7 @@
 name: Deploy DEV
 on:
   push:
-    branch: master
+    branch: dev
 jobs:
   Deploy-dev:
     
@@ -42,7 +42,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.SERVER_DEV_SSH_KEY }}
         script: |
-          aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 721308948482.dkr.ecr.us-east-1.amazonaws.com
-          cd /home/ubuntu/server/apps/felipe-test 
+          aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin [ACCOUNT_ID].dkr.ecr.us-east-1.amazonaws.com
+          cd [DOCKER-COMPOSE_PWD]
           ls -all
-          sudo docker stack deploy --with-registry-auth -c docker-compose.yml felipe-test
+          sudo docker stack deploy --with-registry-auth -c docker-compose.yml [DOCKER_SWARM_STACK]
