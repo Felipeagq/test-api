@@ -2,8 +2,8 @@ name: Deploy PROD
 
 on:
   push:
-    tags:
-      - v* 
+    branch:
+      - master
 
 jobs:
   Deploy-prod:
