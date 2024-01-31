@@ -1,7 +1,9 @@
 name: Deploy PROD
+
 on:
   push:
     branch: master
+
 jobs:
   Deploy-prod:
     
