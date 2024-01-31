@@ -1,11 +1,12 @@
 name: Deploy PROD
+
 on:
   push:
     branch: 
       - 'master'
 
 jobs:
-  Pipeline:
+  deplot-prod:
     
     name: Pipeline
     runs-on: ubuntu-latest
