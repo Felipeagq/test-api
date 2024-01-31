@@ -38,7 +38,7 @@ jobs:
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.EC2_IP }}
+        host: ${{ secrets.EC2_IP_DEV }}
         username: ubuntu
         key: ${{ secrets.ECS_SSH_KEY_PAIR }}
         script: |
