@@ -2,7 +2,7 @@ name: Deploy DEV
 on:
   push:
     branch: 
-      - dev
+      - 'dev'
 jobs:
   Deploy-dev:
     
