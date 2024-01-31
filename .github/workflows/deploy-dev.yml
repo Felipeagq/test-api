@@ -30,7 +30,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v2
 
     - name: docker build image
-      run: docker build . -t $DOCKER_NAME:$VERSION -t $DOCKER_NAME:latest
+      run: docker build . -t $DOCKER_NAME:$VERSION -t $DOCKER_NAME:dev-latest
 
     - name: docker push image
       run: docker push $DOCKER_NAME --all-tags
