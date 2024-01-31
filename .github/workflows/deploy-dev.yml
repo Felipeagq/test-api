@@ -42,7 +42,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.SERVER_DEV_SSH_KEY }}
         script: |
-          aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin [ACCOUNT_ID].dkr.ecr.us-east-1.amazonaws.com
-          cd [DOCKER-COMPOSE_PWD]
+          aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 721308948482.dkr.ecr.us-east-1.amazonaws.com
+          cd /home/ubuntu/server/apps/felipe-test 
           ls -all
-          sudo docker stack deploy --with-registry-auth -c docker-compose.yml [DOCKER_SWARM_STACK]
+          sudo docker stack deploy --with-registry-auth -c docker-compose.yml felipe-test
