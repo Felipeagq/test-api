@@ -6,7 +6,7 @@ app = FastAPI()
 @app.get("/")
 def hello_check():
     return {
-        "msg":"despliegue dev version1"
+        "msg":"despliegue dev version 1"
     }
 
 if __name__ == "__main__":
