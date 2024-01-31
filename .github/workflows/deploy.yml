@@ -3,7 +3,7 @@ name: Deploy PROD
 on:
   push:
     branch:
-      - master
+      - 'master'
 
 jobs:
   Deploy-prod:
