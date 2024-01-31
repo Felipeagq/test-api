@@ -6,7 +6,7 @@ app = FastAPI()
 @app.get("/")
 def hello_check():
     return {
-        "msg":"Hola mundo test dev"
+        "msg":"Hola mundo test dev-latest"
     }
 
 if __name__ == "__main__":
