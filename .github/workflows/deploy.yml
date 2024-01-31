@@ -1,7 +1,8 @@
 name: Deploy PROD
 on:
   push:
-    branch: master
+    tags: 
+      - v*
 jobs:
   Pipeline:
     
