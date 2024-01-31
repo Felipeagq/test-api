@@ -40,7 +40,7 @@ jobs:
       with:
         host: ${{ secrets.EC2_IP_DEV }}
         username: ubuntu
-        key: ${{ secrets.ECS_SSH_KEY_PAIR }}
+        key: ${{ secrets.SERVER_DEV_SSH_KEY }}
         script: |
           aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 721308948482.dkr.ecr.us-east-1.amazonaws.com
           cd /home/ubuntu/server/apps/felipe-test 
