@@ -45,6 +45,11 @@ class UserCreate(BaseModel):
     name: str
     email: str
 
+# class User(BaseModel):
+#     username: str
+#     name: str
+#     email: str
+
 class PostCreate(BaseModel):
     title: str
     content: str
